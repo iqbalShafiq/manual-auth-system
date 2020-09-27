@@ -3,22 +3,24 @@
         class="bg-cool-gray-500 mx-4 py-5 block flex flex-col md:flex-row md:justify-between leading-loose font-medium">
         <ul class="flex flex-col md:flex-row items-center">
             <li>
-                <a href="#" class="mx-3">Home</a>
+                <a href="/" class="mx-3">Home</a>
             </li>
 
+            @auth
             <li>
-                <a href="#" class="mx-3">Dashboard</a>
+                <a href="/dashboard" class="mx-3">Dashboard</a>
             </li>
+            @endauth
         </ul>
 
         <ul class="flex flex-col md:flex-row items-center">
             @guest
             <li>
-                <a href="{{ route('auth.register') }}" class="mx-3">Register</a>
+                <a href="{{ route('register') }}" class="mx-3">Register</a>
             </li>
 
             <li>
-                <a href="#" class="mx-3">Login</a>
+                <a href="{{ route('login') }}" class=" mx-3">Login</a>
             </li>
 
             @else
@@ -27,7 +29,10 @@
             </li>
 
             <li>
-                <a href="#" class="mx-3">Logout</a>
+                <form action="{{ route('logout') }}" class="mx-3" method="POST">
+                    @csrf
+                    <button type="submit" class="focus:outline-none">Logout</button>
+                </form>
             </li>
             @endguest
         </ul>

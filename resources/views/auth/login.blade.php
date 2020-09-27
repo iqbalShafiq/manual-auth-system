@@ -3,7 +3,7 @@
 @section('content')
 <div class="w-full lg:w-5/12 px-3 pb-4 lg:px-0 lg:pb-4">
     <div class="rounded-lg bg-gray-900 px-8 py-4 shadow-lg">
-        <form action="{{ route('register') }}" method="POST">
+        <form action="{{ route('login') }}" method="POST">
             @csrf
 
             <div class="text-3xl font-semibold mb-3">
@@ -11,16 +11,6 @@
             </div>
 
             <div>
-                <div class="mb-5">
-                    <label for="name">Name</label>
-                    <input type="text"
-                        class="mt-1 px-3 py-2 bg-gray-400 text-gray-700 rounded-lg w-full transitions-colors duration-300 focus:bg-gray-200 focus:outline-none focus:shadow"
-                        name="name" id="name">
-                    @error('name')
-                    <span role="alert" class="text-red-400 font-medium text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-
                 <div class="mb-5">
                     <label for="email">Email</label>
                     <input type="email"
@@ -41,15 +31,12 @@
                     @enderror
                 </div>
 
-                <div class="mb-5">
-                    <label for="password_confirmation">Password</label>
-                    <input type="password"
-                        class="mt-1 px-3 py-2 bg-gray-400 text-gray-700 rounded-lg w-full transitions-colors duration-300 focus:bg-gray-200 focus:outline-none focus:shadow"
-                        name="password_confirmation" id="password_confirmation">
+                <div class="mb-3">
+                    <input type="checkbox" class="mr-2" name="remember" id="remember">
+                    <label for="remember" class="select-none">Remember me</label>
                 </div>
-
                 <button
-                    class="w-1/3 px-3 py-2 mb-3 mt-4 font-medium text-gray-700 hover:text-gray-800 focus:text-gray-800 bg-gray-400 hover:bg-gray-300 focus:bg-gray-300 transitions-color duration-300 rounded-lg focus:outline-none">Register</button>
+                    class="w-1/3 px-3 py-2 mb-3 mt-4 font-medium text-gray-700 hover:text-gray-800 focus:text-gray-800 bg-gray-400 hover:bg-gray-300 focus:bg-gray-300 transitions-color duration-300 rounded-lg focus:outline-none">Login</button>
             </div>
 
         </form>

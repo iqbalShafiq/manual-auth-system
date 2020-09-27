@@ -11,7 +11,7 @@ class RegisterController extends Controller
 {
     public function create()
     {
-        return view('auth.register');
+        return view('auth.register', ['title' => "Register"]);
     }
 
     public function store(Request $request)
@@ -27,6 +27,6 @@ class RegisterController extends Controller
 
         Auth::attempt(request()->only('email', 'password'));
 
-        return redirect('/');
+        return redirect()->intended('/');
     }
 }
