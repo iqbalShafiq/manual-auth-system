@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -23,6 +24,8 @@ class RegisterController extends Controller
 
         $attribute['password'] = bcrypt($request->password);
         User::create($attribute);
+
+        Auth::attempt(request()->only('email', 'password'));
 
         return redirect('/');
     }

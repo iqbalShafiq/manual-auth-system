@@ -2,15 +2,34 @@
     <div
         class="bg-cool-gray-500 mx-4 py-5 block flex flex-col md:flex-row md:justify-between leading-loose font-medium">
         <ul class="flex flex-col md:flex-row items-center">
-            <a href="#" class="mx-3">Home</a>
-            <a href="#" class="mx-3">Dashboard</a>
+            <li>
+                <a href="#" class="mx-3">Home</a>
+            </li>
+
+            <li>
+                <a href="#" class="mx-3">Dashboard</a>
+            </li>
         </ul>
 
         <ul class="flex flex-col md:flex-row items-center">
-            <a href="{{ route('auth.register') }}" class="mx-3">Register</a>
-            <a href="#" class="mx-3">Login</a>
-            <a href="#" class="mx-3">Iqbal Shafiq R</a>
-            <a href="#" class="mx-3">Logout</a>
+            @guest
+            <li>
+                <a href="{{ route('auth.register') }}" class="mx-3">Register</a>
+            </li>
+
+            <li>
+                <a href="#" class="mx-3">Login</a>
+            </li>
+
+            @else
+            <li>
+                <a href="#" class="mx-3">{{ auth()->user()->name }}</a>
+            </li>
+
+            <li>
+                <a href="#" class="mx-3">Logout</a>
+            </li>
+            @endguest
         </ul>
     </div>
 </div>
